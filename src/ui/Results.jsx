@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { use } from "react";
 import handleDownloadPdf from "./handleDownloadPdf";
 
-const Results = ({ answers = [], questions = [], onRetakeTest }) => {
+const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
   // Group answers by their quadrant
   // const groupedResults = {
   //   Strength: [],
@@ -27,7 +27,9 @@ const Results = ({ answers = [], questions = [], onRetakeTest }) => {
     (item) => item.quadrant === "Threat"
   );
 
+
   // Debugging: Log the answers and questions
+  console.log(user)
   console.log("Answers:", answers);
   // console.log("Answers type", typeof answers);
   // console.log("Questions:", questions);
@@ -63,7 +65,7 @@ const Results = ({ answers = [], questions = [], onRetakeTest }) => {
           marginBottom: "16px",
         }}
       >
-        SWOT Analysis Results
+        { user } SWOT Analysis Results
       </h2>
 
       {/* Buttons Row */}
@@ -92,7 +94,8 @@ const Results = ({ answers = [], questions = [], onRetakeTest }) => {
               strengthsList,
               weaknessesList,
               opportunitiesList,
-              threatsList
+              threatsList,
+              user
             )
           } // Pass groupedResults to the PDF handler
           className="download-pdf"

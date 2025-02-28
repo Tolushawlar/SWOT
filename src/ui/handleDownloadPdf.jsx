@@ -6,7 +6,8 @@ const handleDownloadPdf = (
   strengthsList,
   weaknessesList,
   opportunitiesList,
-  threatsList
+  threatsList,
+  user
 ) => {
   const doc = new jsPDF();
 
@@ -63,11 +64,11 @@ const handleDownloadPdf = (
 
   // Set up for the second title
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(30);
+  doc.setFontSize(25);
   doc.setTextColor(236, 66, 244); // White text
 
   // Centering "SWOT ANALYSIS" title
-  const title2 = "SWOT ANALYSIS";
+  const title2 = user + " SWOT Analysis Result";
   const title2Width =
     (doc.getStringUnitWidth(title2) * doc.internal.getFontSize()) /
     doc.internal.scaleFactor;
@@ -360,7 +361,7 @@ const addSwotSection = (title, list, color) => {
   addFooter(doc);
 
   // Save the PDF
-  doc.save("SWOT_Analysis_Results.pdf");
+  doc.save(user + " " + "SWOT_Analysis_Results.pdf");
 };
 
 export default handleDownloadPdf;

@@ -1754,6 +1754,8 @@ const Questionnaire = () => {
     email: "",
     phone: "",
   });
+  // console.log(formData)
+  let user = formData.fullName
 
   const totalQuestions = questionsData.length;
   // console.log(answers);
@@ -1775,7 +1777,7 @@ const Questionnaire = () => {
       },
     }));
 
-    if (currentQuestionIndex < totalQuestions - 1 ) {
+    if (currentQuestionIndex < totalQuestions - 1) {
       setTimeout(() => setCurrentQuestionIndex((prev) => prev + 1), 300);
     }
   };
@@ -1799,7 +1801,7 @@ const Questionnaire = () => {
   };
 
   if (isSubmitted) {
-    return <Results answers={answers} questions={questionsData} />;
+    return <Results user={user} answers={answers} questions={questionsData} />;
   }
 
   return (
@@ -1825,35 +1827,50 @@ const Questionnaire = () => {
         selectedAnswer={answers[currentQuestionIndex]?.selected}
       />
 
-      {currentQuestionIndex === totalQuestions - 1  && (
-        <div>
-          <h2>Complete Your Details</h2>
-          <input
-            type="text"
-            name="fullName"
-            placeholder="Full Name"
-            value={formData.fullName}
-            onChange={handleFormChange}
-            required
-          />
-          <br />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleFormChange}
-            required
-          />
-          <br />
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            value={formData.phone}
-            onChange={handleFormChange}
-            required
-          />
+      {currentQuestionIndex === totalQuestions - 1 && (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            marginTop: "16px",
+          }}
+        >
+          <h3>Enter Your Details</h3>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-start",
+            }}
+          >
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Full Name"
+              value={formData.fullName}
+              onChange={handleFormChange}
+              required
+            />
+            <br />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleFormChange}
+              required
+            />
+            <br />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={handleFormChange}
+              required
+            />
+          </div>
           <br />
         </div>
       )}
@@ -1879,7 +1896,7 @@ const Questionnaire = () => {
           Previous
         </button>
 
-        {currentQuestionIndex === totalQuestions - 1  && (
+        {currentQuestionIndex === totalQuestions - 1 && (
           <button
             style={{
               padding: "8px 16px",

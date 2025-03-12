@@ -1811,7 +1811,6 @@ const Questionnaire = () => {
         width: "600px",
         margin: "100px auto",
         padding: "24px",
-        backgroundColor: "white",
         borderRadius: "8px",
       }}
     >
@@ -1836,7 +1835,7 @@ const Questionnaire = () => {
             marginTop: "16px",
           }}
         >
-          <h3>Enter Your Details</h3>
+          <h3 style={{color: "white"}}>Enter Your Details</h3>
           <div
             style={{
               display: "flex",
@@ -1850,6 +1849,7 @@ const Questionnaire = () => {
               placeholder="Full Name"
               value={formData.fullName}
               onChange={handleFormChange}
+              style={{color: "white"}}
               required
             />
             <br />
@@ -1859,6 +1859,7 @@ const Questionnaire = () => {
               placeholder="Email"
               value={formData.email}
               onChange={handleFormChange}
+              style={{color: "white"}}
               required
             />
             <br />
@@ -1868,6 +1869,7 @@ const Questionnaire = () => {
               placeholder="Phone Number"
               value={formData.phone}
               onChange={handleFormChange}
+              style={{color: "white"}}
               required
             />
           </div>

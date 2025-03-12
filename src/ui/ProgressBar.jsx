@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 
 const ProgressBar = ({
@@ -23,14 +24,14 @@ const ProgressBar = ({
           style={{
             width: `${progress * 100}%`,
             height: "100%",
-            backgroundColor: "#4caf50",
+            backgroundColor: "#131A2A",
             transition: "width 0.3s ease-in-out",
           }}
         />
       </div>
 
       {/* Step Information */}
-      <div style={{ paddingTop: "10px", fontSize: "18px", color: "#12192a" }}>
+      <div style={{ paddingTop: "10px", fontSize: "20px", color: "white" }}>
         Question {currentStep } of {totalSteps }
         {/* Step {currentStep} of {totalSteps} in Section {currentSection} ({currentStep} of {totalSections}) */}
       </div>

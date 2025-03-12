@@ -13,6 +13,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: "Lato";
+  src: url("./fonts/Lato/Lato-Regular.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -27,7 +34,16 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
+  font-family: "Lato";
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: url("./bgcover.jpg");
+  background-size: cover;
+  /* background: linear-gradient(right, #6357a5, #556cb3, #131A2A); */
+  -moz-osx-font-smoothing: grayscale;
+  /* background: linear-gradient(to right, #131A2A, #6357a5); */
+  background-size: cover;
 }
 
 h1 {

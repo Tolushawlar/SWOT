@@ -9,7 +9,7 @@ const Question = ({ question, onAnswer, selectedAnswer }) => {
           marginTop: "60px",
           maxWidth: "600px",
           width: "600px",
-          fontSize: "16px"
+          fontSize: "18px"
         }}
         className=" quest text-lg font-bold mb-4"
       >
@@ -40,7 +40,7 @@ const Question = ({ question, onAnswer, selectedAnswer }) => {
               style={{
                 fontFamily: "Poppins, sans-serif", // Corrected font family syntax
                 fontWeight: 500,
-                fontSize: "18px",
+                fontSize: "19px",
                 lineHeight: 1,
                 letterSpacing: "-0.05em",
                 borderRadius: "15px",

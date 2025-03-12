@@ -2,7 +2,7 @@
 import React, { use } from "react";
 import handleDownloadPdf from "./handleDownloadPdf";
 
-const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
+const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
   // Group answers by their quadrant
   // const groupedResults = {
   //   Strength: [],
@@ -27,9 +27,8 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
     (item) => item.quadrant === "Threat"
   );
 
-
   // Debugging: Log the answers and questions
-  console.log(user)
+  console.log(user);
   console.log("Answers:", answers);
   // console.log("Answers type", typeof answers);
   // console.log("Questions:", questions);
@@ -56,7 +55,7 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
   // });
 
   return (
-    <div style={{ textAlign: "center" }} className="riy">
+    <div style={{ textAlign: "center", marginTop: "100px" }} className="riy">
       <h2
         style={{
           fontSize: "2.25rem",
@@ -65,7 +64,7 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
           marginBottom: "16px",
         }}
       >
-        { user } SWOT Analysis Results
+        {user} SWOT Analysis Results
       </h2>
 
       {/* Buttons Row */}
@@ -88,6 +87,7 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
             height: "50px",
             fontWeight: "400",
             fontSize: "14px",
+            color: "black"
           }}
           onClick={() =>
             handleDownloadPdf(
@@ -112,6 +112,7 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
             height: "50px",
             borderRadius: "50px",
             fontSize: "14px",
+            color: "black"
           }}
           onClick={() => window.location.reload()} // Refresh the page
           className="retake-test"
@@ -150,6 +151,7 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
               maxHeight: "30vh",
               overflowY: "auto",
               marginBottom: "25px",
+              backgroundColor: "#131A2A",
               boxShadow:
                 "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)",
             }}
@@ -161,7 +163,7 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
                 textAlign: "center",
                 borderRadius: "20px",
                 padding: "10px",
-                background: "linear-gradient(to right, #16133d, #6357a5)",
+                background: "linear-gradient(to right, #3B82F6, #6357a5)",
               }}
             >
               Strength
@@ -172,14 +174,14 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
                 style={{
                   marginBottom: "16px",
                   padding: "16px",
-                  backgroundColor: "#D1FAE5",
+                  // backgroundColor: "#D1FAE5",
                   borderRadius: "8px",
                   maxWidth: "500px",
                 }}
               >
-                <p style={{ fontWeight: "600" }}>{result.question}</p>
-                <p style={{ color: "#3B82F6" }}>Answer: {result.selected}</p>
-                <p style={{ color: "#6B7280", fontWeight: "bold" }}>
+                <p style={{ fontWeight: "600", color: "#3B82F6" }}>{result.question}</p>
+                <p style={{ color: "white" }}>Answer: {result.selected}</p>
+                <p style={{ color: "white", fontWeight: "bold" }}>
                   Response: {result.response}
                 </p>
               </div>
@@ -197,6 +199,7 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
               width: "40vw",
               maxHeight: "30vh",
               overflowY: "scroll",
+              backgroundColor: "#131A2A",
               boxShadow:
                 "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)",
               marginBottom: "25px",
@@ -209,7 +212,7 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
                 textAlign: "center",
                 borderRadius: "20px",
                 padding: "10px",
-                background: "linear-gradient(to right, #16133d, #6357a5)",
+                background: "linear-gradient(to right, #F87171, #6357a5)",
               }}
             >
               Weakness
@@ -220,14 +223,21 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
                 style={{
                   marginBottom: "16px",
                   padding: "16px",
-                  backgroundColor: "#FECACA",
+                  // backgroundColor: "#FECACA",
                   borderRadius: "8px",
                   maxWidth: "500px",
                 }}
               >
-                <p style={{ fontWeight: "600" }}>{result.question}</p>
-                <p style={{ color: "#F87171" }}>Answer: {result.selected}</p>
-                <p style={{ color: "#6B7280", fontWeight: "bold" }}>
+                <p style={{ fontWeight: "600" , color: "#F87171"}}>{result.question}</p>
+                <p
+                  style={{
+                    // color: "#F87171",
+                    color: "white",
+                  }}
+                >
+                  Answer: {result.selected}
+                </p>
+                <p style={{ color: "white", fontWeight: "bold" }}>
                   Response: {result.response}
                 </p>
               </div>
@@ -256,6 +266,7 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
               width: "40vw",
               maxHeight: "30vh",
               overflowY: "scroll",
+              backgroundColor: "#131A2A",
               marginBottom: "25px",
               boxShadow:
                 "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)",
@@ -268,7 +279,7 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
                 textAlign: "center",
                 borderRadius: "20px",
                 padding: "10px",
-                background: "linear-gradient(to right, #16133d, #6357a5)",
+                background: "linear-gradient(to right, #F59E0B, #6357a5)",
               }}
             >
               Opportunity
@@ -279,14 +290,23 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
                 style={{
                   marginBottom: "16px",
                   padding: "16px",
-                  backgroundColor: "#FEF3C7",
+                  // backgroundColor: "#FEF3C7",
                   borderRadius: "8px",
                   maxWidth: "500px",
                 }}
               >
-                <p style={{ fontWeight: "600" }}>{result.question}</p>
-                <p style={{ color: "#F59E0B" }}>Answer: {result.selected}</p>
-                <p style={{ color: "#6B7280", fontWeight: "bold" }}>
+                <p style={{ fontWeight: "600", color: "#F59E0B" }}>
+                  {result.question}
+                </p>
+                <p
+                  style={{
+                    // color: "#F59E0B",
+                    color: "white",
+                  }}
+                >
+                  Answer: {result.selected}
+                </p>
+                <p style={{ color: "white", fontWeight: "bold" }}>
                   Response: {result.response}
                 </p>
               </div>
@@ -304,6 +324,7 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
               width: "40vw",
               maxHeight: "30vh",
               overflowY: "scroll",
+              backgroundColor: "#131A2A",
               marginBottom: "25px",
               boxShadow:
                 "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)",
@@ -316,7 +337,7 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
                 textAlign: "center",
                 borderRadius: "20px",
                 padding: "10px",
-                background: "linear-gradient(to right, #16133d, #6357a5)",
+                background: "linear-gradient(to right, #EC4899, #6357a5)",
               }}
             >
               Threat
@@ -327,14 +348,23 @@ const Results = ({user, answers = [], questions = [], onRetakeTest }) => {
                 style={{
                   marginBottom: "16px",
                   padding: "16px",
-                  backgroundColor: "#F9A8D4",
+                  // backgroundColor: "#F9A8D4",
                   borderRadius: "8px",
                   maxWidth: "500px",
                 }}
               >
-                <p style={{ fontWeight: "600" }}>{result.question}</p>
-                <p style={{ color: "#EC4899" }}>Answer: {result.selected}</p>
-                <p style={{ color: "#6B7280", fontWeight: "bold" }}>
+                <p style={{ fontWeight: "600", color: "#EC4899" }}>
+                  {result.question}
+                </p>
+                <p
+                  style={{
+                    // color: "#EC4899" ,
+                    color: "white",
+                  }}
+                >
+                  Answer: {result.selected}
+                </p>
+                <p style={{ color: "white", fontWeight: "bold" }}>
                   Response: {result.response}
                 </p>
               </div>

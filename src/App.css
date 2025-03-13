@@ -93,6 +93,7 @@ body {
   overflow-x: hidden;
   overflow-y: scroll;
   background-color: white;
+  color: white !important;
 }
 
 body::-webkit-scrollbar {

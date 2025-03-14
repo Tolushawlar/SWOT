@@ -66,8 +66,8 @@
 
 @media (max-width: 768px) {
   .wrap {
-    height: auto;
-    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
     overflow-x: hidden !important;
   }
 

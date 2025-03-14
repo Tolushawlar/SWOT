@@ -7,11 +7,11 @@ import Footer from "../Components/Footer";
 ChartJS.register(ArcElement, Tooltip, Legend);
 function NewSwotPage() {
   return (
-    <>
+    <div className="wrap">
     <Header/>
     <Questionnaire/>
     <Footer/>
-    </>
+    </div>
   )
 }
 

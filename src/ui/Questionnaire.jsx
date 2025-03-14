@@ -1842,6 +1842,7 @@ const Questionnaire = () => {
               flexDirection: "row",
               justifyContent: "flex-start",
             }}
+            className="formm"
           >
             <input
               type="text"

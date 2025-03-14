@@ -55,7 +55,7 @@
   color: white;
 }
 
-.custom-box{
+.custom-box {
   min-height: 30vh !important;
 }
 
@@ -65,29 +65,40 @@
 }
 
 @media (max-width: 768px) {
+  .wrap {
+    height: auto;
+    width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
   .main {
     width: 80vw !important;
     max-width: 80vw !important;
   }
 
-  .quest{
+  .quest {
     width: 75vw !important;
     max-width: 75vw !important;
   }
 
-  .riy{
+  .riy {
     width: 75vw !important;
     max-width: 75vw !important;
   }
 
-.swotBox{
-  display: flex;
-  flex-direction: column !important;
-}
+  .swotBox {
+    display: flex;
+    flex-direction: column !important;
+  }
 
-.custom-box{
-  width: 70vw !important;
-  overflow-x: hidden;
-}
+  .custom-box {
+    width: 70vw !important;
+    overflow-x: hidden;
+  }
+
+  .formm {
+    display: flex;
+    flex-direction: column !important;
+  }
 
 }

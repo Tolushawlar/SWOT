@@ -84,7 +84,7 @@ const handleDownloadPdf = (
   const circleRadius = 15; // Increased circle radius
   const circleY = 40; // Y position for circles
 
-  const letters = ["S", "W", "O", "T"];
+  const letters = ["S", "W  ", "O", "T"];
   const colors = ["#F44336", "#4CAF50", "#FF9800", "#3F51B5"]; // Color for each letter
 
   // Draw circles and add letters inside them
@@ -97,7 +97,7 @@ const handleDownloadPdf = (
     doc.setFont("helvetica", "bold");
     doc.setTextColor(255, 255, 255); // Set text color to white for contrast
     doc.setFontSize(55);
-    doc.text(letters[i], circleX - 8.5, circleY + 48); // Adjust positioning inside the circle
+    doc.text(letters[i], circleX - 9.2, circleY + 48); // Adjust positioning inside the circle
   }
 
   // Define section titles and content

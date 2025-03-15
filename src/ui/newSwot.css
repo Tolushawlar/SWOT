@@ -90,7 +90,7 @@
   .riy {
     width: 100vw !important;
     max-width: 75vw !important;
-    margin-top: 1000px !important;
+    margin-top: 2300px !important;
     height: inherit !important;
     margin-left: 10px !important;
   }
@@ -109,7 +109,7 @@
     width: 70vw !important;
     overflow-x: hidden;
     height: 100vh !important;
-    /* max-height: 60vh !important; */
+    max-height: 60vh !important;
   }
 
   .custom-box h3 {
@@ -118,13 +118,46 @@
   }
 
   .boxInner {
-    /* overflow: hidden !important;
-    top: -60px !important;
-    height: 100vh !important;
+     overflow: hidden !important;
+    top: -10px !important;
+    max-height:400px !important;
     padding: 220px 0px 0px 0px !important;
-    margin: 50px 0px !important;
-    position: relative; */
-    background-repeat: repeat !important;
+    position: relative; 
+    /* background-color: red !important; */
+
+  }
+
+  .boxInner > * {
+    /* background-color: yellow !important; */
+    position: relative !important;
+    top: 50px !important;
+    margin-bottom: -150px;
+    font-size: 14px;
+    max-width: 350px !important;
+    max-height: 500px !important;
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    /* padding: 10px; */
+  }
+
+  .boxInner .resq{
+    margin-top: -10px !important;
+    position:  relative !important;
+    top: -210px !important;
+    /* margin-bottom: 2px; */
+  }
+
+  .boxInner .resp{
+    position:  relative !important;
+    top: 110px !important;
+    margin-top: -35px !important;
+  }
+
+  
+  .boxInner .ans{
+    position:  relative !important;
+    top: -50px !important;
+    margin-top: -35px !important;
   }
 
   .formm {
@@ -134,17 +167,36 @@
 
   .headd {
     left: -20px !important;
-    top: -30px !important;
-    margin-bottom: -140px !important;
+    top: -80px !important;
+    margin-bottom: -100px !important;
+    /* background-color: red !important; */
+  }
+
+  .headd img {
+    margin-top: 60px !important;
   }
 
   .last-question {
     position: relative !important;
-    left: -6px !important;
-    top: 190px !important;
+    left: -20px !important;
+    top: 140px !important;
     margin-bottom: 30px !important;
     /* background-color: red !important; */
 
   }
 
+}
+
+
+@media only screen and (device-width: 390px) and (device-height: 844px) {
+  .headd {
+    /* background-color: red !important; */
+    top: -15px !important;
+  }
+
+  .last-question{
+    position: relative !important;
+    left: -190px !important;
+    /* background-color: red !important; */
+  }
 }

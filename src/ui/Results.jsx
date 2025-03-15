@@ -191,9 +191,9 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   }}
                   className="boxInner"
                 >
-                  <p style={{ fontWeight: "600", color: "#3B82F6" }}>{result.question}</p>
-                  <p style={{ color: "white" }}>Answer: {result.selected}</p>
-                  <p style={{ color: "white", fontWeight: "bold" }}>
+                  <p  className="resq" style={{ fontWeight: "600", color: "#3B82F6" }}>{result.question}</p>
+                  <p className="ans" style={{ color: "white" }}>Answer: {result.selected}</p>
+                  <p  className="resp" style={{ color: "white", fontWeight: "bold" }}>
                     Response: {result.response}
                   </p>
                 </div>
@@ -241,8 +241,9 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   }}
                   className="boxInner"
                 >
-                  <p style={{ fontWeight: "600", color: "#F87171" }}>{result.question}</p>
+                  <p className="resq" style={{ fontWeight: "600", color: "#F87171" }}>{result.question}</p>
                   <p
+                   className="ans"
                     style={{
                       // color: "#F87171",
                       color: "white",
@@ -250,7 +251,7 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   >
                     Answer: {result.selected}
                   </p>
-                  <p style={{ color: "white", fontWeight: "bold" }}>
+                  <p className="resp" style={{ color: "white", fontWeight: "bold" }}>
                     Response: {result.response}
                   </p>
                 </div>
@@ -309,10 +310,11 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   }}
                   className="boxInner"
                 >
-                  <p style={{ fontWeight: "600", color: "#F59E0B" }}>
+                  <p  className="resq" style={{ fontWeight: "600", color: "#F59E0B" }}>
                     {result.question}
                   </p>
                   <p
+                   className="ans"
                     style={{
                       // color: "#F59E0B",
                       color: "white",
@@ -320,7 +322,7 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   >
                     Answer: {result.selected}
                   </p>
-                  <p style={{ color: "white", fontWeight: "bold" }}>
+                  <p  className="resp" style={{ color: "white", fontWeight: "bold" }}>
                     Response: {result.response}
                   </p>
                 </div>
@@ -368,10 +370,11 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   }}
                   className="boxInner"
                 >
-                  <p style={{ fontWeight: "600", color: "#EC4899" }}>
+                  <p  className="resq" style={{ fontWeight: "600", color: "#EC4899" }}>
                     {result.question}
                   </p>
                   <p
+                   className="ans"
                     style={{
                       // color: "#EC4899" ,
                       color: "white",
@@ -379,7 +382,7 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   >
                     Answer: {result.selected}
                   </p>
-                  <p style={{ color: "white", fontWeight: "bold" }}>
+                  <p  className="resp" style={{ color: "white", fontWeight: "bold" }}>
                     Response: {result.response}
                   </p>
                 </div>

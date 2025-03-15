@@ -11,12 +11,13 @@ function Header() {
             color: 'white',
             height: '60px',
             width: '100%',
-            position: 'absolute',
+            position: 'fixed',
             top: '0px',
             left: '0px',
             // zIndex: '1000',
+            zIndex: 0,
             marginBottom: "20px",
-        }} className=''>
+        }} className='headd'>
             <img src='./logo-white-2.png' alt='logo-img' width={188.78} height={48} />
             {/* <div className='flex flex-row' style={{
                 fontSize: "1.5rem",
@@ -25,7 +26,6 @@ function Header() {
             }}>
                SWOTIFY 
             </div> */}
-            <div></div>
         </div>
     )
 }   

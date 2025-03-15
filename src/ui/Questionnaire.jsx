@@ -1805,122 +1805,147 @@ const Questionnaire = () => {
   }
 
   return (
-    <div
-      className="main"
-      style={{
-        width: "600px",
-        margin: "100px auto",
-        padding: "24px",
-        borderRadius: "8px",
-      }}
-    >
-      <ProgressBar
-        progress={(currentQuestionIndex + 1) / totalQuestions}
-        currentStep={currentQuestionIndex + 1}
-        totalSteps={totalQuestions}
-      />
+    <div className="inner">
+      <div style={{
+        alignItems: 'center',
+        padding: '40px',
+        color: 'white',
+        height: '60px',
+        width: '100%',
+        position: 'relative',
+        top: '0px',
+        left: '-400px',
+        zIndex: 0,
+        marginBottom: "-120px",
+      }} className={`headd ${currentQuestionIndex === totalQuestions - 1 ? 'last-question' : ''}`}>
+        <img src='./logo-white-2.png' alt='logo-img' width={188.78} height={48} />
+        {/* <div className='flex flex-row' style={{
+              fontSize: "1.5rem",
+              fontFamily: "Lato",
+              marginRight: "80px",
+          }}>
+             SWOTIFY 
+          </div> */}
+          <div></div>
+      </div>
+      <div
+        className="main"
+        style={{
+          width: "600px",
+          margin: "100px auto",
+          padding: "24px",
+          borderRadius: "8px",
+        }}
+      >
 
-      <Question
-        question={questionsData[currentQuestionIndex]}
-        onAnswer={handleAnswer}
-        selectedAnswer={answers[currentQuestionIndex]?.selected}
-      />
+        <ProgressBar
+          progress={(currentQuestionIndex + 1) / totalQuestions}
+          currentStep={currentQuestionIndex + 1}
+          totalSteps={totalQuestions}
+        />
 
-      {currentQuestionIndex === totalQuestions - 1 && (
+        <Question
+          question={questionsData[currentQuestionIndex]}
+          onAnswer={handleAnswer}
+          selectedAnswer={answers[currentQuestionIndex]?.selected}
+        />
+
+        {currentQuestionIndex === totalQuestions - 1 && (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              marginTop: "16px",
+            }}
+          >
+            <h3 style={{ color: "white" }}>Enter Your Details</h3>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "flex-start",
+              }}
+              className="formm"
+            >
+              <input
+                type="text"
+                name="fullName"
+                placeholder="Full Name"
+                value={formData.fullName}
+                onChange={handleFormChange}
+                style={{ color: "white" }}
+                required
+              />
+              <br />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleFormChange}
+                style={{ color: "white" }}
+                required
+              />
+              <br />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={handleFormChange}
+                style={{ color: "white" }}
+                required
+              />
+            </div>
+            <br />
+          </div>
+        )}
+
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
             justifyContent: "flex-start",
             marginTop: "16px",
           }}
         >
-          <h3 style={{color: "white"}}>Enter Your Details</h3>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-start",
-            }}
-            className="formm"
-          >
-            <input
-              type="text"
-              name="fullName"
-              placeholder="Full Name"
-              value={formData.fullName}
-              onChange={handleFormChange}
-              style={{color: "white"}}
-              required
-            />
-            <br />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleFormChange}
-              style={{color: "white"}}
-              required
-            />
-            <br />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone Number"
-              value={formData.phone}
-              onChange={handleFormChange}
-              style={{color: "white"}}
-              required
-            />
-          </div>
-          <br />
-        </div>
-      )}
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-start",
-          marginTop: "16px",
-        }}
-      >
-        <button
-          className="prev"
-          style={{
-            padding: "8px 16px",
-            backgroundColor: "#E5E7EB",
-            cursor: currentQuestionIndex === 0 ? "not-allowed" : "pointer",
-            opacity: currentQuestionIndex === 0 ? 0.5 : 1,
-          }}
-          onClick={handlePrevious}
-          disabled={currentQuestionIndex === 0}
-        >
-          Previous
-        </button>
-
-        {currentQuestionIndex === totalQuestions - 1 && (
           <button
+            className="prev"
             style={{
               padding: "8px 16px",
-              background: "linear-gradient(to right, #16133d, #6357a5)",
-              color: "white",
-              marginLeft: "10px",
-              borderRadius: "50px",
-              width: "200px",
-              fontSize: "15px",
-              fontWeight: "bold",
-              cursor: isFormValid ? "pointer" : "not-allowed",
-              opacity: isFormValid ? 1 : 0.5,
+              backgroundColor: "#E5E7EB",
+              cursor: currentQuestionIndex === 0 ? "not-allowed" : "pointer",
+              opacity: currentQuestionIndex === 0 ? 0.5 : 1,
             }}
-            onClick={handleSubmit}
-            disabled={!isFormValid}
+            onClick={handlePrevious}
+            disabled={currentQuestionIndex === 0}
           >
-            Submit
+            Previous
           </button>
-        )}
+
+          {currentQuestionIndex === totalQuestions - 1 && (
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "linear-gradient(to right, #16133d, #6357a5)",
+                color: "white",
+                marginLeft: "10px",
+                borderRadius: "50px",
+                width: "200px",
+                fontSize: "15px",
+                fontWeight: "bold",
+                cursor: isFormValid ? "pointer" : "not-allowed",
+                opacity: isFormValid ? 1 : 0.5,
+              }}
+              onClick={handleSubmit}
+              disabled={!isFormValid}
+            >
+              Submit
+            </button>
+          )}
+        </div>
       </div>
-    </div>
+    </div >
   );
 };
 

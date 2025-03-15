@@ -55,324 +55,340 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
   // });
 
   return (
-    <div style={{ textAlign: "center", marginTop: "100px" }} className="riy">
-      <h2
-        style={{
-          fontSize: "2.25rem",
-          fontWeight: "bold",
-          marginTop: "20px",
-          marginBottom: "16px",
-        }}
-      >
-        {user} SWOT Analysis Results
-      </h2>
-
-      {/* Buttons Row */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "10px", // Space between buttons
-          marginBottom: "20px",
-        }}
-      >
-        <button
+    <>
+      <div style={{ textAlign: "center", marginTop: "" }} className="riy">
+        <img src='./logo-white-2.png' alt='logo-img' width={188.78} height={48} style={{
+        alignItems: 'center',
+        padding: '40px',
+        color: 'white',
+        position: 'relative',
+        top: '0px',
+        left: '-600px',
+        zIndex: 0,
+        marginBottom: "-20px"
+      }} className="rizImg" />
+        <h2
           style={{
-            padding: "10px 15px",
-            backgroundColor: "#E5E7EB",
-            cursor: "pointer",
-            border: "none",
-            borderRadius: "50px",
-            width: "200px",
-            height: "50px",
-            fontWeight: "400",
-            fontSize: "14px",
-            color: "black"
+            fontSize: "2.25rem",
+            fontWeight: "bold",
+            marginTop: "20px",
+            marginBottom: "16px",
           }}
-          onClick={() =>
-            handleDownloadPdf(
-              strengthsList,
-              weaknessesList,
-              opportunitiesList,
-              threatsList,
-              user
-            )
-          } // Pass groupedResults to the PDF handler
-          className="download-pdf"
         >
-          Download PDF
-        </button>
+          {user} SWOT Analysis Results
+        </h2>
 
-        <button
-          style={{
-            padding: "10px 15px",
-            backgroundColor: "#FECACA",
-            cursor: "pointer",
-            border: "none",
-            height: "50px",
-            borderRadius: "50px",
-            fontSize: "14px",
-            color: "black"
-          }}
-          onClick={() => window.location.reload()} // Refresh the page
-          className="retake-test"
-        >
-          Retake Test
-        </button>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+        {/* Buttons Row */}
         <div
-          className="swotBox"
           style={{
             display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "90vw",
+            justifyContent: "center",
+            gap: "10px", // Space between buttons
+            marginBottom: "20px",
           }}
         >
-          {/* Render Strength category */}
-          <div
-            className="custom-box"
+          <button
             style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              border: "1px solid grey",
-              width: "40vw",
-              maxHeight: "30vh",
-              overflowY: "auto",
-              marginBottom: "25px",
-              backgroundColor: "#131A2A",
-              boxShadow:
-                "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)",
+              padding: "10px 15px",
+              backgroundColor: "#E5E7EB",
+              cursor: "pointer",
+              border: "none",
+              borderRadius: "50px",
+              width: "200px",
+              height: "50px",
+              fontWeight: "400",
+              fontSize: "14px",
+              color: "black"
             }}
+            onClick={() =>
+              handleDownloadPdf(
+                strengthsList,
+                weaknessesList,
+                opportunitiesList,
+                threatsList,
+                user
+              )
+            } // Pass groupedResults to the PDF handler
+            className="download-pdf"
           >
-            <h3
-              style={{
-                color: "white",
-                width: "400px",
-                textAlign: "center",
-                borderRadius: "20px",
-                padding: "10px",
-                background: "linear-gradient(to right, #3B82F6, #6357a5)",
-              }}
-            >
-              Strength
-            </h3>
-            {strengthsList.map((result, index) => (
-              <div
-                key={index}
-                style={{
-                  marginBottom: "16px",
-                  padding: "16px",
-                  // backgroundColor: "#D1FAE5",
-                  borderRadius: "8px",
-                  maxWidth: "500px",
-                }}
-              >
-                <p style={{ fontWeight: "600", color: "#3B82F6" }}>{result.question}</p>
-                <p style={{ color: "white" }}>Answer: {result.selected}</p>
-                <p style={{ color: "white", fontWeight: "bold" }}>
-                  Response: {result.response}
-                </p>
-              </div>
-            ))}
-          </div>
+            Download PDF
+          </button>
 
-          {/* Render Weakness category */}
-          <div
-            className="custom-box"
+          <button
             style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              border: "1px solid grey",
-              width: "40vw",
-              maxHeight: "30vh",
-              overflowY: "scroll",
-              backgroundColor: "#131A2A",
-              boxShadow:
-                "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)",
-              marginBottom: "25px",
+              padding: "10px 15px",
+              backgroundColor: "#FECACA",
+              cursor: "pointer",
+              border: "none",
+              height: "50px",
+              borderRadius: "50px",
+              fontSize: "14px",
+              color: "black"
             }}
+            onClick={() => window.location.reload()} // Refresh the page
+            className="retake-test"
           >
-            <h3
-              style={{
-                color: "white",
-                width: "400px",
-                textAlign: "center",
-                borderRadius: "20px",
-                padding: "10px",
-                background: "linear-gradient(to right, #F87171, #6357a5)",
-              }}
-            >
-              Weakness
-            </h3>
-            {weaknessesList.map((result, index) => (
-              <div
-                key={index}
-                style={{
-                  marginBottom: "16px",
-                  padding: "16px",
-                  // backgroundColor: "#FECACA",
-                  borderRadius: "8px",
-                  maxWidth: "500px",
-                }}
-              >
-                <p style={{ fontWeight: "600" , color: "#F87171"}}>{result.question}</p>
-                <p
-                  style={{
-                    // color: "#F87171",
-                    color: "white",
-                  }}
-                >
-                  Answer: {result.selected}
-                </p>
-                <p style={{ color: "white", fontWeight: "bold" }}>
-                  Response: {result.response}
-                </p>
-              </div>
-            ))}
-          </div>
+            Retake Test
+          </button>
         </div>
 
         <div
-          className="swotBox"
           style={{
             display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
+            flexDirection: "column",
+            justifyContent: "center",
             alignItems: "center",
-            width: "90vw",
           }}
         >
-          {/* Render Opportunity category */}
           <div
-            className="custom-box"
+            className="swotBox"
             style={{
               display: "flex",
-              flexDirection: "column",
+              flexDirection: "row",
+              justifyContent: "space-between",
               alignItems: "center",
-              border: "1px solid grey",
-              width: "40vw",
-              maxHeight: "30vh",
-              overflowY: "scroll",
-              backgroundColor: "#131A2A",
-              marginBottom: "25px",
-              boxShadow:
-                "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)",
+              width: "90vw",
             }}
           >
-            <h3
+            {/* Render Strength category */}
+            <div
+              className="custom-box"
               style={{
-                color: "white",
-                width: "400px",
-                textAlign: "center",
-                borderRadius: "20px",
-                padding: "10px",
-                background: "linear-gradient(to right, #F59E0B, #6357a5)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                border: "1px solid grey",
+                width: "40vw",
+                maxHeight: "30vh",
+                overflowY: "auto",
+                marginBottom: "25px",
+                backgroundColor: "#131A2A",
+                boxShadow:
+                  "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)",
               }}
             >
-              Opportunity
-            </h3>
-            {opportunitiesList.map((result, index) => (
-              <div
-                key={index}
+              <h3
                 style={{
-                  marginBottom: "16px",
-                  padding: "16px",
-                  // backgroundColor: "#FEF3C7",
-                  borderRadius: "8px",
-                  maxWidth: "500px",
+                  color: "white",
+                  width: "400px",
+                  textAlign: "center",
+                  borderRadius: "20px",
+                  padding: "10px",
+                  background: "linear-gradient(to right, #3B82F6, #6357a5)",
                 }}
               >
-                <p style={{ fontWeight: "600", color: "#F59E0B" }}>
-                  {result.question}
-                </p>
-                <p
+                Strength
+              </h3>
+              {strengthsList.map((result, index) => (
+                <div
+                  key={index}
                   style={{
-                    // color: "#F59E0B",
-                    color: "white",
+                    marginBottom: "16px",
+                    padding: "16px",
+                    // backgroundColor: "#D1FAE5",
+                    borderRadius: "8px",
+                    maxWidth: "500px",
                   }}
+                  className="boxInner"
                 >
-                  Answer: {result.selected}
-                </p>
-                <p style={{ color: "white", fontWeight: "bold" }}>
-                  Response: {result.response}
-                </p>
-              </div>
-            ))}
+                  <p style={{ fontWeight: "600", color: "#3B82F6" }}>{result.question}</p>
+                  <p style={{ color: "white" }}>Answer: {result.selected}</p>
+                  <p style={{ color: "white", fontWeight: "bold" }}>
+                    Response: {result.response}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Render Weakness category */}
+            <div
+              className="custom-box"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                border: "1px solid grey",
+                width: "40vw",
+                maxHeight: "30vh",
+                overflowY: "scroll",
+                backgroundColor: "#131A2A",
+                boxShadow:
+                  "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)",
+                marginBottom: "25px",
+              }}
+            >
+              <h3
+                style={{
+                  color: "white",
+                  width: "400px",
+                  textAlign: "center",
+                  borderRadius: "20px",
+                  padding: "10px",
+                  background: "linear-gradient(to right, #F87171, #6357a5)",
+                }}
+              >
+                Weakness
+              </h3>
+              {weaknessesList.map((result, index) => (
+                <div
+                  key={index}
+                  style={{
+                    marginBottom: "16px",
+                    padding: "16px",
+                    // backgroundColor: "#FECACA",
+                    borderRadius: "8px",
+                    maxWidth: "500px",
+                  }}
+                  className="boxInner"
+                >
+                  <p style={{ fontWeight: "600", color: "#F87171" }}>{result.question}</p>
+                  <p
+                    style={{
+                      // color: "#F87171",
+                      color: "white",
+                    }}
+                  >
+                    Answer: {result.selected}
+                  </p>
+                  <p style={{ color: "white", fontWeight: "bold" }}>
+                    Response: {result.response}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Render Threat category */}
           <div
-            className="custom-box"
+            className="swotBox"
             style={{
               display: "flex",
-              flexDirection: "column",
+              flexDirection: "row",
+              justifyContent: "space-between",
               alignItems: "center",
-              border: "1px solid grey",
-              width: "40vw",
-              maxHeight: "30vh",
-              overflowY: "scroll",
-              backgroundColor: "#131A2A",
-              marginBottom: "25px",
-              boxShadow:
-                "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)",
+              width: "90vw",
             }}
           >
-            <h3
+            {/* Render Opportunity category */}
+            <div
+              className="custom-box"
               style={{
-                color: "white",
-                width: "400px",
-                textAlign: "center",
-                borderRadius: "20px",
-                padding: "10px",
-                background: "linear-gradient(to right, #EC4899, #6357a5)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                border: "1px solid grey",
+                width: "40vw",
+                maxHeight: "30vh",
+                overflowY: "scroll",
+                backgroundColor: "#131A2A",
+                marginBottom: "25px",
+                boxShadow:
+                  "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)",
               }}
             >
-              Threat
-            </h3>
-            {threatsList.map((result, index) => (
-              <div
-                key={index}
+              <h3
                 style={{
-                  marginBottom: "16px",
-                  padding: "16px",
-                  // backgroundColor: "#F9A8D4",
-                  borderRadius: "8px",
-                  maxWidth: "500px",
+                  color: "white",
+                  width: "400px",
+                  textAlign: "center",
+                  borderRadius: "20px",
+                  padding: "10px",
+                  background: "linear-gradient(to right, #F59E0B, #6357a5)",
                 }}
               >
-                <p style={{ fontWeight: "600", color: "#EC4899" }}>
-                  {result.question}
-                </p>
-                <p
+                Opportunity
+              </h3>
+              {opportunitiesList.map((result, index) => (
+                <div
+                  key={index}
                   style={{
-                    // color: "#EC4899" ,
-                    color: "white",
+                    marginBottom: "16px",
+                    padding: "16px",
+                    // backgroundColor: "#FEF3C7",
+                    borderRadius: "8px",
+                    maxWidth: "500px",
                   }}
+                  className="boxInner"
                 >
-                  Answer: {result.selected}
-                </p>
-                <p style={{ color: "white", fontWeight: "bold" }}>
-                  Response: {result.response}
-                </p>
-              </div>
-            ))}
+                  <p style={{ fontWeight: "600", color: "#F59E0B" }}>
+                    {result.question}
+                  </p>
+                  <p
+                    style={{
+                      // color: "#F59E0B",
+                      color: "white",
+                    }}
+                  >
+                    Answer: {result.selected}
+                  </p>
+                  <p style={{ color: "white", fontWeight: "bold" }}>
+                    Response: {result.response}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Render Threat category */}
+            <div
+              className="custom-box"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                border: "1px solid grey",
+                width: "40vw",
+                maxHeight: "30vh",
+                overflowY: "scroll",
+                backgroundColor: "#131A2A",
+                marginBottom: "25px",
+                boxShadow:
+                  "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)",
+              }}
+            >
+              <h3
+                style={{
+                  color: "white",
+                  width: "400px",
+                  textAlign: "center",
+                  borderRadius: "20px",
+                  padding: "10px",
+                  background: "linear-gradient(to right, #EC4899, #6357a5)",
+                }}
+              >
+                Threat
+              </h3>
+              {threatsList.map((result, index) => (
+                <div
+                  key={index}
+                  style={{
+                    marginBottom: "16px",
+                    padding: "16px",
+                    // backgroundColor: "#F9A8D4",
+                    borderRadius: "8px",
+                    maxWidth: "500px",
+                  }}
+                  className="boxInner"
+                >
+                  <p style={{ fontWeight: "600", color: "#EC4899" }}>
+                    {result.question}
+                  </p>
+                  <p
+                    style={{
+                      // color: "#EC4899" ,
+                      color: "white",
+                    }}
+                  >
+                    Answer: {result.selected}
+                  </p>
+                  <p style={{ color: "white", fontWeight: "bold" }}>
+                    Response: {result.response}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

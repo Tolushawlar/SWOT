@@ -21,6 +21,7 @@ const ProgressBar = ({
         }}
       >
         <div
+        className="prog"
           style={{
             width: `${progress * 100}%`,
             height: "100%",
@@ -32,7 +33,7 @@ const ProgressBar = ({
 
       {/* Step Information */}
       <div style={{ paddingTop: "10px", fontSize: "20px", color: "white" }}>
-        Question {currentStep } of {totalSteps }
+        Question {currentStep } of  {totalSteps }
         {/* Step {currentStep} of {totalSteps} in Section {currentSection} ({currentStep} of {totalSections}) */}
       </div>
     </div>

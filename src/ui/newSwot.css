@@ -109,6 +109,7 @@
     width: 70vw !important;
     overflow-x: hidden;
     height: 100vh !important;
+    /* max-height: 60vh !important; */
   }
 
   .custom-box h3 {
@@ -117,12 +118,13 @@
   }
 
   .boxInner {
-    overflow: hidden !important;
+    /* overflow: hidden !important;
     top: -60px !important;
     height: 100vh !important;
     padding: 220px 0px 0px 0px !important;
     margin: 50px 0px !important;
-    position: relative;
+    position: relative; */
+    background-repeat: repeat !important;
   }
 
   .formm {
@@ -137,9 +139,12 @@
   }
 
   .last-question {
-    position: relative;
-    top: 170px !important;
+    position: relative !important;
+    left: -6px !important;
+    top: 190px !important;
     margin-bottom: 30px !important;
+    /* background-color: red !important; */
+
   }
 
 }

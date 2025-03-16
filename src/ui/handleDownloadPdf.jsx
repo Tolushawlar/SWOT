@@ -276,6 +276,14 @@ const handleDownloadPdf = (
   //     addFooter(doc);
   // };
 
+  // Helper function to convert hex color to RGB
+  const hexToRgb = (hex) => {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return [r, g, b];
+  };
+
   const addSwotSection = (title, list, color) => {
     if (list.length === 0) return;
 
@@ -291,6 +299,18 @@ const handleDownloadPdf = (
       pageNumber += 1;
     }
 
+
+    // Define header colors based on the title
+    const headerColors = {
+      Strengths: "#F44336",   // Green
+      Weaknesses: "#4CAF50",  // Red
+      Opportunities: "#FF9800", // Orange
+      Threats: "#3F51B5"       // Blue
+    };
+
+    // Set the header color based on the title
+    const headerColor = headerColors[title];
+
     addSoftBackground(doc);
     drawPageBorder(doc);
     addFooter(doc);
@@ -300,7 +320,7 @@ const handleDownloadPdf = (
     // Add section header
     doc.setDrawColor(0, 0, 0);
     doc.setLineWidth(0.5);
-    doc.setFillColor(...color);
+    doc.setFillColor(...hexToRgb(headerColor)); // Convert hex to RGB
     doc.roundedRect(10, currentY, 190, 20, 10, 10, "FD");
 
     doc.setFont("helvetica", "bold");

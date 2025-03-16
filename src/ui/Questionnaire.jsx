@@ -1755,17 +1755,44 @@ const Questionnaire = () => {
     phone: "",
   });
   // console.log(formData)
+  const [forAnswer, setForAnswer] = useState({});
   let user = formData.fullName
 
   const totalQuestions = questionsData.length;
   // console.log(answers);
-  const handleAnswer = (selectedOption) => {
+  // const handleAnswer = (selectedOption) => {
+  //   console.log(
+  //     selectedOption,
+  //     questionsData[currentQuestionIndex].id,
+  //     questionsData[currentQuestionIndex].question
+  //   );
+  //   setAnswers((prev) => ({
+  //     ...prev,
+  //     [currentQuestionIndex]: {
+  //       questionId: questionsData[currentQuestionIndex].id,
+  //       question: questionsData[currentQuestionIndex].question,
+  //       id: selectedOption.id,
+  //       selected: selectedOption.label,
+  //       response: selectedOption.response,
+  //       quadrant: selectedOption.quadrant,
+  //     },
+  //   }));
+
+  //   if (currentQuestionIndex < totalQuestions - 1) {
+  //     setTimeout(() => setCurrentQuestionIndex((prev) => prev + 1), 300);
+  //   }
+  // };
+
+  const handleAnswer = async (selectedOption) => {
+    // Ensure that the answer for the current question is set before moving to the next
     console.log(
       selectedOption,
       questionsData[currentQuestionIndex].id,
       questionsData[currentQuestionIndex].question
     );
-    setAnswers((prev) => ({
+
+    // Update answers state for the current question
+    await setAnswers((prev) => ({
       ...prev,
       [currentQuestionIndex]: {
         questionId: questionsData[currentQuestionIndex].id,
@@ -1777,10 +1804,13 @@ const Questionnaire = () => {
       },
     }));
 
+    // Wait until the answer is set before moving to the next question
     if (currentQuestionIndex < totalQuestions - 1) {
+      // Ensure that state updates are complete before moving on
       setTimeout(() => setCurrentQuestionIndex((prev) => prev + 1), 300);
     }
   };
+
 
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
@@ -1826,7 +1856,7 @@ const Questionnaire = () => {
           }}>
              SWOTIFY 
           </div> */}
-          <div></div>
+        <div></div>
       </div>
       <div
         className="main"

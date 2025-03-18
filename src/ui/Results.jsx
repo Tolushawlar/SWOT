@@ -94,7 +94,7 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
             gap: "10px", // Space between buttons
             marginBottom: "20px",
           }}
-          clasName="btns"
+          className="btns"
         >
           <button
             style={{

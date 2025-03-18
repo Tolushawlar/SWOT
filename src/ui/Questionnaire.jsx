@@ -1756,7 +1756,7 @@ const Questionnaire = () => {
   });
   // console.log(formData)
   const [forAnswer, setForAnswer] = useState({});
-  let user = formData.fullName
+  let user = formData.fullName;
 
   const totalQuestions = questionsData.length;
   // console.log(answers);
@@ -1783,34 +1783,127 @@ const Questionnaire = () => {
   //   }
   // };
 
+  // const handleAnswer = async (selectedOption) => {
+  //   // Ensure that the answer for the current question is set before moving to the next
+  //   console.log(
+  //     selectedOption,
+  //     questionsData[currentQuestionIndex].id,
+  //     questionsData[currentQuestionIndex].question
+  //   );
+
+  //   // Update answers state for the current question
+  //   await setAnswers((prev) => ({
+  //     ...prev,
+  //     [currentQuestionIndex]: {
+  //       questionId: questionsData[currentQuestionIndex].id,
+  //       question: questionsData[currentQuestionIndex].question,
+  //       id: selectedOption.id,
+  //       selected: selectedOption.label,
+  //       response: selectedOption.response,
+  //       quadrant: selectedOption.quadrant,
+  //     },
+  //   }));
+
+  //   // Wait until the answer is set before moving to the next question
+  //   if (currentQuestionIndex < totalQuestions - 1) {
+  //     // Ensure that state updates are complete before moving on
+  //     setTimeout(() => setCurrentQuestionIndex((prev) => prev + 1), 300);
+  //   }
+  // };
+
+  // const handleAnswer = async (selectedOption) => {
+  //   // Create the new answer object
+  //   const newAnswer = {
+  //     questionId: questionsData[currentQuestionIndex].id,
+  //     question: questionsData[currentQuestionIndex].question,
+  //     id: selectedOption.id,
+  //     selected: selectedOption.label,
+  //     response: selectedOption.response,
+  //     quadrant: selectedOption.quadrant,
+  //   };
+
+  //   // Update answers state using the callback form to ensure we have the latest state
+  //   const updatedAnswers = await new Promise((resolve) => {
+  //     setAnswers((prevAnswers) => {
+  //       const newAnswers = {
+  //         ...prevAnswers,
+  //         [currentQuestionIndex]: newAnswer,
+  //       };
+  //       resolve(newAnswers);
+  //       return newAnswers;
+  //     });
+  //   });
+
+  //   // Check if this was the last question
+  //   if (currentQuestionIndex === totalQuestions - 1) {
+  //     // All questions are answered, process the complete answers array
+  //     console.log("Final answers:", updatedAnswers);
+  //     // setShowResults(true); // Assuming you have this state for showing results
+  //   } else {
+  //     // Move to next question after a short delay to ensure state is updated
+  //     setTimeout(() => {
+  //       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+  //     }, 300);
+  //   }
+  // };
+
   const handleAnswer = async (selectedOption) => {
-    // Ensure that the answer for the current question is set before moving to the next
-    console.log(
-      selectedOption,
-      questionsData[currentQuestionIndex].id,
-      questionsData[currentQuestionIndex].question
-    );
-
-    // Update answers state for the current question
-    await setAnswers((prev) => ({
-      ...prev,
-      [currentQuestionIndex]: {
-        questionId: questionsData[currentQuestionIndex].id,
-        question: questionsData[currentQuestionIndex].question,
-        id: selectedOption.id,
-        selected: selectedOption.label,
-        response: selectedOption.response,
-        quadrant: selectedOption.quadrant,
-      },
-    }));
-
-    // Wait until the answer is set before moving to the next question
-    if (currentQuestionIndex < totalQuestions - 1) {
-      // Ensure that state updates are complete before moving on
-      setTimeout(() => setCurrentQuestionIndex((prev) => prev + 1), 300);
+    // Create the new answer object
+    const newAnswer = {
+      questionId: questionsData[currentQuestionIndex].id,
+      question: questionsData[currentQuestionIndex].question,
+      id: selectedOption.id,
+      selected: selectedOption.label,
+      response: selectedOption.response,
+      quadrant: selectedOption.quadrant,
+    };
+  
+    // Update answers state using the callback form to ensure we have the latest state
+    const updatedAnswers = await new Promise((resolve) => {
+      setAnswers((prevAnswers) => {
+        const newAnswers = {
+          ...prevAnswers,
+          [currentQuestionIndex]: newAnswer,
+        };
+        resolve(newAnswers);
+        return newAnswers;
+      });
+    });
+  
+    // Check if this was the last question
+    if (currentQuestionIndex === totalQuestions - 1) {
+      // Verify all previous questions are answered before showing results
+      const allQuestionsAnswered = Array.from({ length: totalQuestions }).every(
+        (_, index) => updatedAnswers[index]?.questionId
+      );
+  
+      if (allQuestionsAnswered) {
+        console.log("Final answers:", updatedAnswers);
+        // setShowResults(true);
+      } else {
+        // Find first unanswered question
+        const firstUnansweredIndex = Array.from({ length: totalQuestions }).findIndex(
+          (_, index) => !updatedAnswers[index]?.questionId
+        );
+        setCurrentQuestionIndex(firstUnansweredIndex);
+      }
+    } else {
+      // Check if the next question's previous question (current - 1) is answered
+      const canProceed = currentQuestionIndex === 0 || 
+        updatedAnswers[currentQuestionIndex - 1]?.questionId;
+  
+      if (canProceed) {
+        // Move to next question after a short delay to ensure state is updated
+        setTimeout(() => {
+          setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+        }, 300);
+      } else {
+        // Go back to the unanswered previous question
+        setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
+      }
     }
   };
-
+  
 
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
@@ -1836,19 +1929,29 @@ const Questionnaire = () => {
 
   return (
     <div className="inner">
-      <div style={{
-        alignItems: 'center',
-        padding: '40px',
-        color: 'white',
-        height: '60px',
-        width: '100%',
-        position: 'relative',
-        top: '0px',
-        left: '-400px',
-        zIndex: 0,
-        marginBottom: "-120px",
-      }} className={`headd ${currentQuestionIndex === totalQuestions - 1 ? 'last-question' : ''}`}>
-        <img src='./logo-white-2.png' alt='logo-img' width={188.78} height={48} />
+      <div
+        style={{
+          alignItems: "center",
+          padding: "40px",
+          color: "white",
+          height: "60px",
+          width: "100%",
+          position: "relative",
+          top: "0px",
+          left: "-400px",
+          zIndex: 0,
+          marginBottom: "-120px",
+        }}
+        className={`headd ${
+          currentQuestionIndex === totalQuestions - 1 ? "last-question" : ""
+        }`}
+      >
+        <img
+          src="./logo-white-2.png"
+          alt="logo-img"
+          width={188.78}
+          height={48}
+        />
         {/* <div className='flex flex-row' style={{
               fontSize: "1.5rem",
               fontFamily: "Lato",
@@ -1867,7 +1970,6 @@ const Questionnaire = () => {
           borderRadius: "8px",
         }}
       >
-
         <ProgressBar
           progress={(currentQuestionIndex + 1) / totalQuestions}
           currentStep={currentQuestionIndex + 1}
@@ -1975,7 +2077,7 @@ const Questionnaire = () => {
           )}
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

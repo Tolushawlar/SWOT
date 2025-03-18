@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { use } from "react";
 import handleDownloadPdf from "./handleDownloadPdf";
+import handleDownloadPdfBW from "./handleDownloadPdfBW";
 
 const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
   // Group answers by their quadrant
@@ -57,16 +58,23 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
   return (
     <>
       <div style={{ textAlign: "center", marginTop: "" }} className="riy">
-        <img src='./logo-white-2.png' alt='logo-img' width={188.78} height={48} style={{
-        alignItems: 'center',
-        padding: '40px',
-        color: 'white',
-        position: 'relative',
-        top: '0px',
-        left: '-600px',
-        zIndex: 0,
-        marginBottom: "-20px"
-      }} className="rizImg" />
+        <img
+          src="./logo-white-2.png"
+          alt="logo-img"
+          width={188.78}
+          height={48}
+          style={{
+            alignItems: "center",
+            padding: "40px",
+            color: "white",
+            position: "relative",
+            top: "0px",
+            left: "-600px",
+            zIndex: 0,
+            marginBottom: "-20px",
+          }}
+          className="rizImg"
+        />
         <h2
           style={{
             fontSize: "2.25rem",
@@ -86,7 +94,25 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
             gap: "10px", // Space between buttons
             marginBottom: "20px",
           }}
+          clasName="btns"
         >
+          <button
+            style={{
+              padding: "10px 15px",
+              backgroundColor: "#FECACA",
+              cursor: "pointer",
+              border: "none",
+              height: "50px",
+              borderRadius: "50px",
+              fontSize: "14px",
+              color: "black",
+            }}
+            onClick={() => window.location.reload()} // Refresh the page
+            className="retake-test"
+          >
+            Retake Test
+          </button>
+
           <button
             style={{
               padding: "10px 15px",
@@ -98,7 +124,7 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
               height: "50px",
               fontWeight: "400",
               fontSize: "14px",
-              color: "black"
+              color: "black",
             }}
             onClick={() =>
               handleDownloadPdf(
@@ -111,24 +137,34 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
             } // Pass groupedResults to the PDF handler
             className="download-pdf"
           >
-            Download PDF
+            Download PDF ( Coloured)
           </button>
 
           <button
             style={{
               padding: "10px 15px",
-              backgroundColor: "#FECACA",
+              backgroundColor: "#E5E7EB",
               cursor: "pointer",
               border: "none",
-              height: "50px",
               borderRadius: "50px",
+              width: "200px",
+              height: "50px",
+              fontWeight: "400",
               fontSize: "14px",
-              color: "black"
+              color: "black",
             }}
-            onClick={() => window.location.reload()} // Refresh the page
-            className="retake-test"
+            onClick={() =>
+              handleDownloadPdfBW(
+                strengthsList,
+                weaknessesList,
+                opportunitiesList,
+                threatsList,
+                user
+              )
+            } // Pass groupedResults to the PDF handler
+            className="download-pdf"
           >
-            Retake Test
+            Download PDF (Black & White)
           </button>
         </div>
 
@@ -191,9 +227,19 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   }}
                   className="boxInner"
                 >
-                  <p  className="resq" style={{ fontWeight: "600", color: "#3B82F6" }}>{result.question}</p>
-                  <p className="ans" style={{ color: "white" }}>Answer: {result.selected}</p>
-                  <p  className="resp" style={{ color: "white", fontWeight: "bold" }}>
+                  <p
+                    className="resq"
+                    style={{ fontWeight: "600", color: "#3B82F6" }}
+                  >
+                    {result.question}
+                  </p>
+                  <p className="ans" style={{ color: "white" }}>
+                    Answer: {result.selected}
+                  </p>
+                  <p
+                    className="resp"
+                    style={{ color: "white", fontWeight: "bold" }}
+                  >
                     Response: {result.response}
                   </p>
                 </div>
@@ -241,9 +287,14 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   }}
                   className="boxInner"
                 >
-                  <p className="resq" style={{ fontWeight: "600", color: "#F87171" }}>{result.question}</p>
                   <p
-                   className="ans"
+                    className="resq"
+                    style={{ fontWeight: "600", color: "#F87171" }}
+                  >
+                    {result.question}
+                  </p>
+                  <p
+                    className="ans"
                     style={{
                       // color: "#F87171",
                       color: "white",
@@ -251,7 +302,10 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   >
                     Answer: {result.selected}
                   </p>
-                  <p className="resp" style={{ color: "white", fontWeight: "bold" }}>
+                  <p
+                    className="resp"
+                    style={{ color: "white", fontWeight: "bold" }}
+                  >
                     Response: {result.response}
                   </p>
                 </div>
@@ -310,11 +364,14 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   }}
                   className="boxInner"
                 >
-                  <p  className="resq" style={{ fontWeight: "600", color: "#F59E0B" }}>
+                  <p
+                    className="resq"
+                    style={{ fontWeight: "600", color: "#F59E0B" }}
+                  >
                     {result.question}
                   </p>
                   <p
-                   className="ans"
+                    className="ans"
                     style={{
                       // color: "#F59E0B",
                       color: "white",
@@ -322,7 +379,10 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   >
                     Answer: {result.selected}
                   </p>
-                  <p  className="resp" style={{ color: "white", fontWeight: "bold" }}>
+                  <p
+                    className="resp"
+                    style={{ color: "white", fontWeight: "bold" }}
+                  >
                     Response: {result.response}
                   </p>
                 </div>
@@ -370,11 +430,14 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   }}
                   className="boxInner"
                 >
-                  <p  className="resq" style={{ fontWeight: "600", color: "#EC4899" }}>
+                  <p
+                    className="resq"
+                    style={{ fontWeight: "600", color: "#EC4899" }}
+                  >
                     {result.question}
                   </p>
                   <p
-                   className="ans"
+                    className="ans"
                     style={{
                       // color: "#EC4899" ,
                       color: "white",
@@ -382,7 +445,10 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
                   >
                     Answer: {result.selected}
                   </p>
-                  <p  className="resp" style={{ color: "white", fontWeight: "bold" }}>
+                  <p
+                    className="resp"
+                    style={{ color: "white", fontWeight: "bold" }}
+                  >
                     Response: {result.response}
                   </p>
                 </div>

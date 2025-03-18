@@ -186,6 +186,11 @@
     left: -30px !important;
   }
 
+  .btns{
+    display: flex;
+    flex-direction: column !important;
+  }
+
 }
 
 

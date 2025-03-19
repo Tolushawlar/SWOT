@@ -1759,6 +1759,7 @@ const Questionnaire = () => {
   let user = formData.fullName;
 
   const totalQuestions = questionsData.length;
+  console.log(totalQuestions);
   // console.log(answers);
   // const handleAnswer = (selectedOption) => {
   //   console.log(
@@ -1943,9 +1944,8 @@ const Questionnaire = () => {
           marginBottom: "-120px",
         }}
         className={`headd ${
-          currentQuestionIndex === totalQuestions - 1 ? "last-question" : ""
-        }`}
-      >
+  currentQuestionIndex === totalQuestions - 2 ? "last-question" : ""
+}`}      >
         <img
           src="./logo-white-2.png"
           alt="logo-img"

@@ -166,7 +166,6 @@
     left: 20px !important;
     top: 200px !important;
     margin-bottom: 80px !important;
-    /* background-color: red !important; */
   }
 
   .headd img {
@@ -178,7 +177,6 @@
     left: -4px !important;
     top: 100px !important;
     margin-bottom: 30px !important;
-    /* background-color: red !important; */
   }
 
   .rizImg {
@@ -198,13 +196,11 @@
 
 @media only screen and (device-width: 390px) and (device-height: 844px) {
   .headd {
-    /* background-color: red !important; */
     top: -15px !important;
   }
 
   .last-question{
     position: relative !important;
     left: -190px !important;
-    /* background-color: red !important; */
   }
 }

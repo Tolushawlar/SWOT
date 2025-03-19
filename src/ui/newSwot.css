@@ -205,4 +205,8 @@
     left: -190px !important;
     top: 50vw !important;
   }
+
+  .boxInner > * {
+    max-height: 510px !important;
+  }
 }

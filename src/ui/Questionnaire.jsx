@@ -1858,9 +1858,10 @@ const Questionnaire = () => {
       response: selectedOption.response,
       quadrant: selectedOption.quadrant,
     };
-  
+
     // Update answers state using the callback form to ensure we have the latest state
     const updatedAnswers = await new Promise((resolve) => {
+      console.log(currentQuestionIndex);
       setAnswers((prevAnswers) => {
         const newAnswers = {
           ...prevAnswers,
@@ -1870,29 +1871,30 @@ const Questionnaire = () => {
         return newAnswers;
       });
     });
-  
+
     // Check if this was the last question
     if (currentQuestionIndex === totalQuestions - 1) {
       // Verify all previous questions are answered before showing results
       const allQuestionsAnswered = Array.from({ length: totalQuestions }).every(
         (_, index) => updatedAnswers[index]?.questionId
       );
-  
+
       if (allQuestionsAnswered) {
         console.log("Final answers:", updatedAnswers);
         // setShowResults(true);
       } else {
         // Find first unanswered question
-        const firstUnansweredIndex = Array.from({ length: totalQuestions }).findIndex(
-          (_, index) => !updatedAnswers[index]?.questionId
-        );
+        const firstUnansweredIndex = Array.from({
+          length: totalQuestions,
+        }).findIndex((_, index) => !updatedAnswers[index]?.questionId);
         setCurrentQuestionIndex(firstUnansweredIndex);
       }
     } else {
       // Check if the next question's previous question (current - 1) is answered
-      const canProceed = currentQuestionIndex === 0 || 
+      const canProceed =
+        currentQuestionIndex === 0 ||
         updatedAnswers[currentQuestionIndex - 1]?.questionId;
-  
+
       if (canProceed) {
         // Move to next question after a short delay to ensure state is updated
         setTimeout(() => {
@@ -1904,7 +1906,6 @@ const Questionnaire = () => {
       }
     }
   };
-  
 
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
@@ -1943,9 +1944,8 @@ const Questionnaire = () => {
           zIndex: 0,
           marginBottom: "-120px",
         }}
-        className={`headd ${
-  currentQuestionIndex === totalQuestions - 2 ? "last-question" : ""
-}`}      >
+        className="headd"
+      >
         <img
           src="./logo-white-2.png"
           alt="logo-img"
@@ -1961,6 +1961,31 @@ const Questionnaire = () => {
           </div> */}
         <div></div>
       </div>
+      {currentQuestionIndex === totalQuestions - 1 && (
+        <div
+          style={{
+            alignItems: "center",
+            padding: "40px",
+            color: "white",
+            height: "60px",
+            width: "100%",
+            position: "relative",
+            top: "0px",
+            left: "-400px",
+            zIndex: 0,
+            marginBottom: "-120px",
+          }}
+          className="headd"
+        >
+          <img
+            src="./logo-white-2.png"
+            alt="logo-img"
+            width={188.78}
+            height={48}
+          />
+          <div></div>
+        </div>
+      )}
       <div
         className="main"
         style={{

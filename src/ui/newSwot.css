@@ -196,7 +196,8 @@
   .last-question {
     position: relative !important;
     left: -190px !important;
-    top: 20vw !important;
+    top: -120vw !important;
+    background-color: red !important;
   }
 
   .riy .riyImg {

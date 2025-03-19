@@ -95,8 +95,6 @@
     margin-left: 10px !important;
   }
 
- 
-
   .swotBox {
     display: flex;
     flex-direction: column !important;
@@ -115,13 +113,12 @@
   }
 
   .boxInner {
-     overflow: hidden !important;
+    overflow: hidden !important;
     top: -10px !important;
-    max-height:400px !important;
+    max-height: 400px !important;
     padding: 220px 0px 0px 0px !important;
-    position: relative; 
+    position: relative;
     /* background-color: red !important; */
-
   }
 
   .boxInner > * {
@@ -137,22 +134,21 @@
     /* padding: 10px; */
   }
 
-  .boxInner .resq{
+  .boxInner .resq {
     margin-top: -10px !important;
-    position:  relative !important;
+    position: relative !important;
     top: -210px !important;
     /* margin-bottom: 2px; */
   }
 
-  .boxInner .resp{
-    position:  relative !important;
+  .boxInner .resp {
+    position: relative !important;
     top: 110px !important;
     margin-top: -35px !important;
   }
 
-  
-  .boxInner .ans{
-    position:  relative !important;
+  .boxInner .ans {
+    position: relative !important;
     top: -50px !important;
     margin-top: -35px !important;
   }
@@ -180,27 +176,32 @@
   }
 
   .rizImg {
-    margin-top:-20px !important;
+    margin-top: -20px !important;
     left: -30px !important;
   }
 
-  .btns{
+  .btns {
     display: flex;
     flex-direction: column !important;
     align-items: center;
     justify-content: center;
   }
-
 }
-
 
 @media only screen and (device-width: 390px) and (device-height: 844px) {
   .headd {
     top: -15px !important;
   }
 
-  .last-question{
+  .last-question {
     position: relative !important;
     left: -190px !important;
+    top: 50vw !important;
+  }
+
+  .riy .riyImg {
+    position: relative !important;
+    left: -190px !important;
+    top: 50vw !important;
   }
 }

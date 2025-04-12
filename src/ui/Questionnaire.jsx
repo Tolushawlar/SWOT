@@ -1749,6 +1749,7 @@ const Questionnaire = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -1919,12 +1920,30 @@ const Questionnaire = () => {
 
   const isFormValid = formData.fullName && formData.email && formData.phone;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (isFormValid) {
-      setIsSubmitted(true);
+      setIsSubmitting(true);
+      try {
+        const response = await fetch('https://services.leadconnectorhq.com/hooks/MJHmir5Xkxz4EWxcOEj3/webhook-trigger/23EaRw19TjCgaK8wGoJ3', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+          setIsSubmitted(true);
+        } else {
+          console.error('Error submitting form');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
-
   if (isSubmitted) {
     return <Results user={user} answers={answers} questions={questionsData} />;
   }
@@ -2091,13 +2110,13 @@ const Questionnaire = () => {
                 width: "200px",
                 fontSize: "15px",
                 fontWeight: "bold",
-                cursor: isFormValid ? "pointer" : "not-allowed",
-                opacity: isFormValid ? 1 : 0.5,
+                cursor: (isFormValid && !isSubmitting) ? "pointer" : "not-allowed",
+                opacity: (isFormValid && !isSubmitting) ? 1 : 0.5,
               }}
               onClick={handleSubmit}
-              disabled={!isFormValid}
+              disabled={!isFormValid || isSubmitting}
             >
-              Submit
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           )}
         </div>

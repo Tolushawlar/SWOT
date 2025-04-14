@@ -29,15 +29,15 @@ const Results = ({ user, answers = [], questions = [], onRetakeTest }) => {
   );
 
   // Debugging: Log the answers and questions
-  console.log(user);
-  console.log("Answers:", answers);
+  // console.log(user);
+  // console.log("Answers:", answers);
   // console.log("Answers type", typeof answers);
   // console.log("Questions:", questions);
 
-  console.log("Strengths:", strengthsList);
-  console.log("Weaknesses:", weaknessesList);
-  console.log("Opportunities:", opportunitiesList);
-  console.log("Threats:", threatsList);
+  // console.log("Strengths:", strengthsList);
+  // console.log("Weaknesses:", weaknessesList);
+  // console.log("Opportunities:", opportunitiesList);
+  // console.log("Threats:", threatsList);
 
   // Object.entries(answers).forEach(([questionId, answer]) => {
   //   const question = questions.find((q) => q.id === Number(questionId));

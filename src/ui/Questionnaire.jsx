@@ -3,6 +3,7 @@ import ProgressBar from "./ProgressBar";
 import Question from "./Question";
 import Results from "./Results";
 
+
 const questionsData = [
   {
     id: 1,
@@ -1754,13 +1755,14 @@ const Questionnaire = () => {
     fullName: "",
     email: "",
     phone: "",
+    answers: ""
   });
   // console.log(formData)
   const [forAnswer, setForAnswer] = useState({});
   let user = formData.fullName;
 
   const totalQuestions = questionsData.length;
-  console.log(totalQuestions);
+  // console.log(totalQuestions);
   // console.log(answers);
   // const handleAnswer = (selectedOption) => {
   //   console.log(
@@ -1862,7 +1864,7 @@ const Questionnaire = () => {
 
     // Update answers state using the callback form to ensure we have the latest state
     const updatedAnswers = await new Promise((resolve) => {
-      console.log(currentQuestionIndex);
+      // console.log(currentQuestionIndex);
       setAnswers((prevAnswers) => {
         const newAnswers = {
           ...prevAnswers,
@@ -1920,30 +1922,46 @@ const Questionnaire = () => {
 
   const isFormValid = formData.fullName && formData.email && formData.phone;
 
+
   const handleSubmit = async () => {
     if (isFormValid) {
       setIsSubmitting(true);
       try {
-        const response = await fetch('https://services.leadconnectorhq.com/hooks/MJHmir5Xkxz4EWxcOEj3/webhook-trigger/23EaRw19TjCgaK8wGoJ3', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData)
-        });
+        // Format answers into plain text
+        const formattedAnswers = Object.values(answers)
+          .map(
+            (answer) =>
+              `Question ${answer.questionId}: ${answer.question}\nAnswer: ${answer.selected}\nResponse: ${answer.response}\nQuadrant: ${answer.quadrant}\n\n`
+          )
+          .join("");
+
+        // Update formData with formatted answers
+        setFormData({ ...formData, answers: formattedAnswers });
+
+        const response = await fetch(
+          "https://services.leadconnectorhq.com/hooks/MJHmir5Xkxz4EWxcOEj3/webhook-trigger/23EaRw19TjCgaK8wGoJ3",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ...formData, answers: formattedAnswers }),
+          }
+        );
 
         if (response.ok) {
           setIsSubmitted(true);
         } else {
-          console.error('Error submitting form');
+          console.error("Error submitting form");
         }
       } catch (error) {
-        console.error('Error:', error);
+        console.error("Error:", error);
       } finally {
         setIsSubmitting(false);
       }
     }
   };
+
   if (isSubmitted) {
     return <Results user={user} answers={answers} questions={questionsData} />;
   }
@@ -2124,5 +2142,6 @@ const Questionnaire = () => {
     </div>
   );
 };
+
 
 export default Questionnaire;
